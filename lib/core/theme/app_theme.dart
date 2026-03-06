@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'app_colors.dart';
 
 /// Application theme configuration with Light and True Black (OLED) modes.
@@ -31,7 +30,8 @@ abstract final class AppTheme {
           ),
           iconTheme: IconThemeData(color: AppColors.onSurfaceLight),
         ),
-        cardTheme: CardTheme(
+        // تم التغيير هنا من CardTheme إلى CardThemeData
+        cardTheme: CardThemeData(
           elevation: 0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
@@ -106,7 +106,8 @@ abstract final class AppTheme {
           ),
           iconTheme: IconThemeData(color: AppColors.onSurfaceDark),
         ),
-        cardTheme: CardTheme(
+        // تم التغيير هنا أيضاً من CardTheme إلى CardThemeData
+        cardTheme: CardThemeData(
           elevation: 0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
