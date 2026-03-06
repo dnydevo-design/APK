@@ -18,13 +18,18 @@ jobs:
         with:
           channel: 'stable'
           
-      - name: Install Dependencies
+      - name: Repair and Build
         run: |
+          # تحديث المكتبات وحل تعارض intl
           flutter pub add intl:^0.20.2
           flutter pub get
           
-      - name: Build APK
-        run: flutter build apk --release
+          # محاولة إصلاح ملفات الأندرويد تلقائياً
+          # إذا كان المجلد مفقوداً أو تالفاً، سيتم إنشاؤه من جديد
+          flutter create . --platforms android
+          
+          # بناء الـ APK
+          flutter build apk --release
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
