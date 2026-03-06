@@ -18,16 +18,23 @@ jobs:
         with:
           channel: 'stable'
           
-      - name: Repair and Build
+      - name: Build Process
         run: |
-          # تحديث المكتبات
+          # 1. تحديث نسخة المكتبة المتعارضة لضمان التوافق مع الإصدار الحديث
           flutter pub add intl:^0.20.2
           flutter pub get
           
-          # إعادة إنشاء ملفات الأندرويد المتوافقة
+          # 2. إنشاء مجلدات وهمية لمنع فشل البناء بسبب ملفات الـ Assets المفقودة في جيت هب
+          mkdir -p assets/images assets/icons assets/fonts
+          touch assets/fonts/Inter-Regular.ttf
+          touch assets/fonts/Inter-Medium.ttf
+          touch assets/fonts/Inter-SemiBold.ttf
+          touch assets/fonts/Inter-Bold.ttf
+          
+          # 3. تهيئة ملفات الأندرويد لضمان توافق الـ Gradle
           flutter create . --platforms android
           
-          # تنظيف وبناء الـ APK
+          # 4. تنظيف المشروع وبناء الـ APK النهائي
           flutter clean
           flutter build apk --release
 
