@@ -3,10 +3,8 @@ import 'dart:async';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../../core/constants/app_constants.dart';
+import '../../../../core/constants/app_constants.dart';
 
-/// SQLite database helper for Fast Share.
-///
 /// Manages database creation, migrations, and provides
 /// factory access to the singleton database instance.
 class DatabaseHelper {
@@ -137,3 +135,4 @@ class DatabaseHelper {
     _database = null;
   }
 }
+
