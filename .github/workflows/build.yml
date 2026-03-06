@@ -20,15 +20,15 @@ jobs:
           
       - name: Repair and Build
         run: |
-          # تحديث المكتبات وحل تعارض intl
+          # تحديث المكتبات
           flutter pub add intl:^0.20.2
           flutter pub get
           
-          # محاولة إصلاح ملفات الأندرويد تلقائياً
-          # إذا كان المجلد مفقوداً أو تالفاً، سيتم إنشاؤه من جديد
+          # إعادة إنشاء ملفات الأندرويد المتوافقة
           flutter create . --platforms android
           
-          # بناء الـ APK
+          # تنظيف وبناء الـ APK
+          flutter clean
           flutter build apk --release
 
       - name: Upload APK
